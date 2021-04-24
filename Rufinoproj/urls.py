@@ -2,7 +2,7 @@ from django.conf.urls import url
 from Emergency import views
 
 urlpatterns = [
-	url(r'^$', views.MainPage, name='MainPage'),
+	url(r'^$', views.MainPage, name='mainpage'),
 ]
 
 
