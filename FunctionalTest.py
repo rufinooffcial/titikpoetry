@@ -34,8 +34,8 @@ class PageTesting(unittest.TestCase):
 		time.sleep (1)
 		table = self.browser.find_element_by_id('Table')
 		rows = table.find_element_by_tag_name('tr')
-		
+		self.assertIn('1: Rufino delacruz in Rufino.delacruz@gsfe.tupcavite.edu.ph',[row.text for row in rows])
 
 
 if __name__ == '__main__':
-	unittest.main()
+	unittest.main(warnings='ignore')
