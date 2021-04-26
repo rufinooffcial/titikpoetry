@@ -58,12 +58,11 @@
 	{% csrf_token %}
 </form>
 <table id="Table">
+	{% for item in newPerson %}
 	<tr>
-		<td>{{newPerson}}</td>
-		<td>{{newPlace}}</td>
-		<td>{{newSex}}</td>
-		<td>{{newTitle}}</td>
+		<td>{{ forloop.counter }}: {{ item.text}}</td>
 	</tr>
+	{% endfor %}
 </table>
 
 </body>

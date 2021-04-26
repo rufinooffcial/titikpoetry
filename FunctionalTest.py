@@ -56,7 +56,7 @@ class PageTesting(unittest.TestCase):
 		time.sleep(1)
 		btnConfirm.click()
 		time.sleep(2)
-		self.check_rows_in_listtable("Rufino Delacruz Rufino.delacruz@gsfe.tupcavite.edu.ph")
+		self.check_rows_in_listtable("1: Rufino Delacruz")
 
 		Name = self.browser.find_element_by_id('Newmember')
 		time.sleep(1)
@@ -88,7 +88,7 @@ class PageTesting(unittest.TestCase):
 		time.sleep(1)
 		btnConfirm.click()
 		time.sleep(1)
-		self.check_rows_in_listtable("Lawrence Lawrence@gsfe.tupcavite.edu.ph")
+		self.check_rows_in_listtable("2: Lawrence")
 
 
 

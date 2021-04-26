@@ -1,8 +1,13 @@
-from django.shortcuts import render
-#from django.http import HttpResponse
+from django.http import HttpResponse
+from Emergency.models import Item
+from django.shortcuts import render, redirect
 
-# Create your views here.
 
 def MainPage(request):
-	return render(request, 'mainpage.html',{'newPerson':request.POST.get('Newmember'),'newPlace':request.POST.get('contact',''),})
+	if request.method == 'POST':
+		Item.objects.create(text=request.POST['Newmember'])
+		return redirect('/')
+	#return render(request,'mainpage.html')
+	items = Item.objects.all()
+	return render(request, 'mainpage.html', {'newPerson': items})
 
