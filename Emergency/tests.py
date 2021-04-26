@@ -1,4 +1,5 @@
 from django.test import TestCase
+from Emergency.models import Item
 
 
 
@@ -14,6 +15,20 @@ class HomePageTest(TestCase):
 		self.assertIn('New entry', response.content.decode())
 		self.assertTemplateUsed(response,'mainpage.html')
 
+class ORMTest(TestCase):
+	def test_saving_retrieving_list(self):
+		txtItem1 = Item()
+		txtItem1.text = 'Item one'
+		txtItem1.save()
+		txtItem2 = Item()
+		txtItem2.text = 'Item two'
+		txtItem2.save()
+		savedItems = Item.objects.all()
+		self.assertEqual(savedItems.count(), 2)
+		savedItem1 = savedItems[0]
+		savedItem2 = savedItems[1]
+		self.assertEqual(savedItem1.text, 'Item one')
+		self.assertEqual(savedItem2.text, 'Item two')
 
 	'''
 		from django.urls import resolve

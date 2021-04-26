@@ -15,7 +15,8 @@
 		name="Newmember" 
 		size="30" 
 		placeholder="Enter your name"
-	/>
+	/><br/><br/>
+	<label>Email</label>
 	<input 
 		type="text" 
 		id="contact" 
@@ -30,13 +31,22 @@
 		name="Sex" 
 		size="30px" 
 		placeholder="Male/Female" 
-	/>
+	/><br/><br/>
+	<label>Title of Piece</label>
 	<input 
 		type="text" 
 		id="Title" 
 		name="Title" 
 		size="25"
 		placeholder="Title of your piece"
+	/><br/><br/>
+	<label>Link of your performance</label>
+	<input 
+		type="text" 
+		id="Link" 
+		name="Link" 
+		size="25"
+		placeholder="Link"
 	/>
 	<input 
 		type="submit" 
@@ -49,7 +59,7 @@
 </form>
 <table id="Table">
 	<tr>
-		<td>1: {{newPerson}}</td>
+		<td>{{newPerson}}</td>
 		<td>{{newPlace}}</td>
 		<td>{{newSex}}</td>
 		<td>{{newTitle}}</td>
