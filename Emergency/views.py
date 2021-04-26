@@ -4,4 +4,10 @@ from django.shortcuts import render
 # Create your views here.
 
 def MainPage(request):
-	return render(request, 'mainpage.html')
+	return render(request, 'mainpage.html',
+		{'newPerson':request.POST.get('Newmember'),
+		'newPlace':request.POST.get('contact',''),
+		'newSex':request.POST.get('Sex',''),
+		'newTitle':request.POST.get('Title',''),
+		})
+

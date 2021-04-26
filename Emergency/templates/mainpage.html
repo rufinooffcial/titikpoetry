@@ -6,18 +6,56 @@
 <h1>Audition Form</h1>
 <p>Personal Info</p>
 
-<form action="/action_page.php">
-  <label for="name" id="name1">Name:</label>
-  <input type="text" id="name" name="name" placeholder="First Name/ Middle Name/ Last Name"><br>
-  <label for="birthdate" id="date">Birthday</label>
-  <input type="text" id="date1" name="bday" placeholder="Month/Day/Year"><br>
-  <label for="email" id="mail">Email</label>
-  <input type="contact" id="email" name="email" placeholder="Gmail"><br>
-  <label for="sample" id="sample">Sample of your Piece</label>
-  <input type="text" id="sample" name="sample" placeholder="Example"><br>
-  <input type="submit" id="clear" value="Submit">
- 
+<form method="POST">
+
+	<label>Name:</label>
+	<input 
+		type="text" 
+		id="Newmember"
+		name="Newmember" 
+		size="30" 
+		placeholder="Enter your name"
+	/>
+	<input 
+		type="text" 
+		id="contact" 
+		name="contact" 
+		size="25" 
+		placeholder="Email "
+	/><br/><br/>
+	<label>Sex:</label>
+	<input 
+		type="text" 
+		id="Sex" 
+		name="Sex" 
+		size="30px" 
+		placeholder="Male/Female" 
+	/>
+	<input 
+		type="text" 
+		id="Title" 
+		name="Title" 
+		size="25"
+		placeholder="Title of your piece"
+	/>
+	<input 
+		type="submit" 
+		id="btnConfirm" 
+		name="btnConfirm" 
+		style="color: red; background-color: lightgrey" 
+		value="Confirm"
+	/>
+	{% csrf_token %}
 </form>
+<table id="Table">
+	<tr>
+		<td>{{newPerson}}</td>
+		<td>{{newPlace}}</td>
+		<td>in</td>
+		<td>{{newSex}}</td>
+		<td>{{newTitle}}</td>
+	</tr>
+</table>
 
 </body>
 </html>
