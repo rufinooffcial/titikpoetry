@@ -10,4 +10,3 @@ def MainPage(request):
 	#return render(request,'mainpage.html')
 	items = Item.objects.all()
 	return render(request, 'mainpage.html', {'newPerson': items})
-

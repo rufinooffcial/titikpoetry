@@ -1,8 +1,5 @@
 from django.test import TestCase
 from Emergency.models import Item
-
-
-
 	
 class HomePageTest(TestCase):
 
@@ -49,6 +46,7 @@ class ORMTest(TestCase):
 		savedItem2 = savedItems[1]
 		self.assertEqual(savedItem1.text, 'Item one')
 		self.assertEqual(savedItem2.text, 'Item two')
+
 
 	'''
 		from django.urls import resolve

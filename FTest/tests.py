@@ -13,10 +13,10 @@ class PageTesting(LiveServerTestCase):
 	def tearDown(self):
 		self.browser.quit()
 	
-	def wait_rows_in_listtable(self, row_text):
+	def wait_rows_in_listtable(self, row_text):                                   
 		start_time = time.time()
 		while time.time()-start_time<cWait:
-			time.sleep(0.2)
+			time.sleep(0.1)
 		try:
 			table = self.browser.find_element_by_id('Table')
 			rows = table.find_elements_by_tag_name('tr')
@@ -30,7 +30,7 @@ class PageTesting(LiveServerTestCase):
 		#rows = table.find_elements_by_tag_name('tr')
 		#self.assertIn(row_text, [row.text for row in rows])
 
-	def test_start_list_and_retrieve_it(self):
+	def test_start_list_one_user(self):
 		self.browser.get(self.live_server_url)
 		self.assertIn('Titik Poetry Inc.', self.browser.title)
 		hText = self.browser.find_element_by_tag_name('h1').text
@@ -50,6 +50,7 @@ class PageTesting(LiveServerTestCase):
 		inSex = self.browser.find_element_by_id('Sex')
 		inSex.click()
 		inSex.send_keys('Male')
+		time.sleep(.1)
 		inTitle = self.browser.find_element_by_id('Title')
 		inTitle.click()
 		inTitle.send_keys('TDD ang sagot')
@@ -63,21 +64,21 @@ class PageTesting(LiveServerTestCase):
 		self.wait_rows_in_listtable('1: Rufino Delacruz')
 
 		time.sleep(.1)
-		inName1 = self.browser.find_element_by_id('Newmember')
-		inName1.click()
-		inName1.send_keys('Lawrence')
+		inName = self.browser.find_element_by_id('Newmember')
+		inName.click()
+		inName.send_keys('Lawrence')
 		time.sleep(.1)
-		inContact1 = self.browser.find_element_by_id('contact')
-		inContact1.click()
-		inContact1.send_keys('Lawrence@gsfe.tupcavite.edu.ph')
+		inContact = self.browser.find_element_by_id('contact')
+		inContact.click()
+		inContact.send_keys('Lawrence@gsfe.tupcavite.edu.ph')
 		time.sleep(.1)
-		inSex1 = self.browser.find_element_by_id('Sex')
-		inSex1.click()
-		inSex1.send_keys('Male')
+		inSex = self.browser.find_element_by_id('Sex')
+		inSex.click()
+		inSex.send_keys('Male')
 		time.sleep(.1)
-		inTitle1 = self.browser.find_element_by_id('Title')
-		inTitle1.click()
-		inTitle1.send_keys('MagTDD na')
+		inTitle = self.browser.find_element_by_id('Title')
+		inTitle.click()
+		inTitle.send_keys('MagTDD na')
 		time.sleep(.1)
 		inputLink = self.browser.find_element_by_id('Link')
 		inputLink.click()
@@ -85,8 +86,5 @@ class PageTesting(LiveServerTestCase):
 		time.sleep(.1)
 		btnConfirm = self.browser.find_element_by_id('btnConfirm')
 		btnConfirm.click()
-		self.wait_rows_in_listtable('2: Lawrence')
+		self.wait_rows_in_listtable("2: Lawrence")
 
-
-#if __name__ == '__main__':
-	#unittest.main(warnings='ignore')
