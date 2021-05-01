@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 from django.test import LiveServerTestCase
+from selenium.common.exceptions import WebDriverException
 
 cWait = 3
 class PageTesting(LiveServerTestCase):
@@ -56,9 +57,9 @@ class PageTesting(LiveServerTestCase):
 		inLink.click()
 		inLink.send_keys('https://www.youtube.com/watch?v=50wBHY16Cg0')
 		time.sleep(.1)
-		btnConfirm = self.browser.find_element_by_id('btnConfirm')
-		btnConfirm.click()
-		self.wait_rows_in_listtable("1: Rufino Delacruz")
+		inConfirm = self.browser.find_element_by_id('inConfirm')
+		inConfirm.click()
+		self.wait_rows_in_listtable('1: Rufino Delacruz')
 
 		time.sleep(.1)
 		inName = self.browser.find_element_by_id('Newmember')
@@ -81,9 +82,9 @@ class PageTesting(LiveServerTestCase):
 		inLink.click()
 		inLink.send_keys('https://www.youtube.com/watch?v=0wdkvw-TaQQ')
 		time.sleep(.1)
-		btnConfirm = self.browser.find_element_by_id('btnConfirm')
-		btnConfirm.click()
-		self.wait_rows_in_listtable("2: Lawrence")
+		inConfirm = self.browser.find_element_by_id('inConfirm')
+		inConfirm.click()
+		self.wait_rows_in_listtable('2: Lawrence')
 
 	def test_other_users_different_urls(self):
 		self.browser.get(self.live_server_url)
@@ -104,9 +105,9 @@ class PageTesting(LiveServerTestCase):
 		inLink.click()
 		inLink.send_keys('youtube.com')
 		time.sleep(.1)
-		btnConfirm = self.browser.find_element_by_id('btnConfirm')
-		btnConfirm.click()
-		self.wait_rows_in_listtable("1: Lovely Joy")
+		inConfirm = self.browser.find_element_by_id('inConfirm')
+		inConfirm.click()
+		self.wait_rows_in_listtable('1: Lovely Joy')
 		viewlist_url = self.browser.current_url
 		self.assertRegex(viewlist_url, '/Emergency/.+')
 
@@ -114,7 +115,7 @@ class PageTesting(LiveServerTestCase):
 		self.browser = webdriver.Firefox()
 		self.browser.get(self.live_server_url)
 		pageBody = self.browser.find_element_by_tag_name('body').text
-		self.assertNotIn("1:Lovely Joy", pageBody)
+		self.assertNotIn('Lovely Joy', pageBody)
 		time.sleep(.1)
 		inName = self.browser.find_element_by_id('Newmember')
 		inName.click()
@@ -132,15 +133,15 @@ class PageTesting(LiveServerTestCase):
 		inLink.click()
 		inLink.send_keys('youtube.com/Eljohn')
 		time.sleep(.1)
-		btnConfirm = self.browser.find_element_by_id('btnConfirm')
-		btnConfirm.click()
-		self.wait_rows_in_listtable("1: Eljohn Torres")
+		inConfirm = self.browser.find_element_by_id('inConfirm')
+		inConfirm.click()
+		self.wait_rows_in_listtable('1: Eljohn Torres')
 		user2_url = self.browser.current_url
 		self.assertRegex(user2_url, 'Emergency/.+')
 		self.assertNotEqual(viewlist_url, user2_url)
 		pageBody = self.browser.find_element_by_tag_name('body').text
-		#self.assertNotIn('Lovely Joy', pageBody)
-		self.assertIn("2: Eljohn Torres", pageBody)
+		self.assertNotIn('Lovely Joy', pageBody)
+		self.assertIn('Eljohn Torres', pageBody)
 
 
 

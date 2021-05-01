@@ -6,7 +6,7 @@
 <h1>Audition Form</h1>
 <p>Personal Info</p>
 
-<form method="POST" action="/Emergency/newlist_url">
+<form method="POST" action="/Emergency/{{ RecId.id }}/addItem">
 
 	<label>Name:</label>
 	<input 
@@ -58,12 +58,11 @@
 	{% csrf_token %}
 </form>
 <table id="Table">
-	{% for item in newPerson%}
+	{% for item in RecId.item_set.all %}
 	<tr>
 		<td>{{ forloop.counter }}: {{ item.text }}</td>
 	</tr>
 	{% endfor %}
 </table>
-
 </body>
 </html>

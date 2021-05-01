@@ -1,16 +1,25 @@
 from django.http import HttpResponse
-from Emergency.models import Item
+from Emergency.models import Item, Recruit
 from django.shortcuts import render, redirect
 
-
 def MainPage(request):
-	if request.method == 'POST':
-		Item.objects.create(text=request.POST['Newmember'])
-		return redirect('/Emergency/viewlist_url/')
-	#return render(request,'mainpage.html')
-	items = Item.objects.all()
-	return render(request, 'mainpage.html', {'newPerson': items})
+	return render(request, 'mainpage.html')
 
-def ViewList(request):
-		items = Item.objects.all()
-		return render(request, 'mainpage.html', {'newPerson': items})
+def ViewList(request, RecId):
+	rId = Recruit.objects.get(id=RecId)
+	return render(request, 'listpage.html', {'RecId': rId})
+
+def NewList(request):
+	newRecruit = Recruit.objects.create()
+	Item.objects.create(RecId=newRecruit, text=request.POST['Newmember'])
+	return redirect(f'/Emergency/{newRecruit.id}/')
+
+def AddItem(request,rId):
+	rId = Recruit.objects.get(id=rId)
+	Item.objects.create(RecId=rId,text=request.POST['Newmember'])
+	return redirect(f'/Emergency/{rId.id}/')
+
+
+	#if request.method == 'POST':
+		#Item.objects.create(text=request.POST['Newmember'])
+		#return redirect('/Emergency/viewlist_url/')
