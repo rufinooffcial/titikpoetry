@@ -3,6 +3,7 @@ from Emergency import views
 
 urlpatterns = [
 	url(r'^$', views.MainPage, name='mainpage'),
+	url(r'^Emergency/viewlist_url/$', views.ViewList, name='viewlist'),
 ]
 
 

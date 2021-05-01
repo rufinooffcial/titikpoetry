@@ -23,7 +23,7 @@ class HomePageTest(TestCase):
 	def test_redirects_POST(self):
 		response = self.client.post('/',data={'Newmember':'New entry'})
 		self.assertEqual(response.status_code, 302)
-		self.assertEqual(response['location'], '/')
+		self.assertEqual(response['location'], '/Emergency/viewlist_url/')
 
 	def test_template_displays_list(self):
 		Item.objects.create(text='List item 1')
@@ -47,6 +47,13 @@ class ORMTest(TestCase):
 		self.assertEqual(savedItem1.text, 'Item one')
 		self.assertEqual(savedItem2.text, 'Item two')
 
+class ViewTest(TestCase):
+	def test_displays_all(self):
+		Item.objects.create(text='MJ')
+		Item.objects.create(text='LJ')
+		response = self.client.get('/Emergency/viewlist_url/')
+		self.assertContains(response, 'MJ')
+		self.assertContains(response, 'LJ')
 
 	'''
 		from django.urls import resolve
