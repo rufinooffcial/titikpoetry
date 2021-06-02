@@ -1,0 +1,62 @@
+<html>
+<body>
+<head>
+<title>Titik Poetry Inc.</title>
+</head>
+<h1 style="color: red; font-size: 40px">Audition Form</h1>
+<p>Personal Info</p>
+
+<form method="POST" action="/TitikPoetryApp/kitalistahan_url">
+
+	<label>Name:</label>
+	<input 
+		type="text" 
+		id="member"
+		name="member" 
+		size="30" 
+		placeholder="Enter your name" required 
+	/><br/><br/>
+	<label>Email</label>
+	<input 
+		type="text" 		
+		id="contact" 
+		name="contact" 
+		size="25" 
+		placeholder="Email" required
+	/><br/><br/>
+	<label>Sex:</label>
+	<input 
+		type="text" 
+		id="Sex" 
+		name="Sex" 
+		size="30px" 
+		placeholder="Male/Female"  required
+	/><br/><br/>
+	<label>Title of Piece</label>
+	<input 
+		type="text" 
+		id="Title" 
+		name="Title" 
+		size="25"
+		placeholder="Title of your piece"required
+	/><br/><br/>
+	<label>Link of your performance</label>
+	<input 
+		type="text" 
+		id="Link" 
+		name="Link" 
+		size="25"
+		placeholder="Link"required
+	/>
+	<input 
+		type="submit" 
+		id="inConfirm" 
+		name="inConfirm" 
+		style="color: red; background-color: lightgrey" 
+		value="Confirm"required
+	/>
+	{% csrf_token %}
+</form>
+
+</body>
+</html>

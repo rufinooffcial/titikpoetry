@@ -1,0 +1,21 @@
+<html>
+<body>
+<head>
+<title>Titik Poetry Inc.</title>
+</head>
+<h1 style="color: blue; font-size: 55px">Candidate</h1>
+<form method="POST" action="/TitikPoetryApp/{{ RecId.id }}/addItem">
+	
+	{% csrf_token %}
+<input 
+		type="text" 
+		id="member"
+		name="member" 
+		size="30" 
+		placeholder="Enter your name" required 
+	/><br/><br/>
+
+	 
+</form>
+</body>
+</html>

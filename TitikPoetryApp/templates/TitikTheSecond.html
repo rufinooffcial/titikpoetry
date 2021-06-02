@@ -1,0 +1,46 @@
+<html>
+<body>
+<head>
+<title>Titik Poetry Inc.</title>
+</head>
+<h1 style="color: blue; font-size: 55px">Candidate</h1>
+{{RecId.name}}<br/><br/>
+{{RecId.contact}}<br/><br/>
+{{RecId.sex}}<br/><br/>
+{{RecId.title}}<br/><br/>
+{{RecId.link}}<br/><br/>
+<br/><br/><br/><br/>
+<form method="POST" action="/TitikPoetryApp/{{ RecId.id }}/addItem">
+	
+	{% csrf_token %}
+	<label>Name:</label>
+	<textarea type="text" id="Newmember" name="Newmember" 
+		size="30" placeholder="Enter your name"></textarea><br/><br/>
+			<input 
+		type="text" 
+		id="title_tula" 
+		name="title_tula" 
+		size="25"
+		placeholder="Title of your piece"required
+	/><br/><br/>
+	<input 
+		type="submit" 
+		id="inConfirm" 
+		name="inConfirm" 
+		style="color: red; background-color: lightgrey" 
+		value="Confirm"
+	/>
+ <input type="file" id="file" 
+		name="file">
+
+</form>
+<table id="Table">
+	{% for item in RecId.item_set.all %}
+	<tr>
+		<td>Title{{ forloop.counter }}: {{ item.tula }}</td>
+		<td>{{ item.text }}</td>
+	</tr>
+	{% endfor %}
+</table>
+</body>
+</html>
